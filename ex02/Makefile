@@ -1,5 +1,5 @@
 NAME = Program
-SRC = main.cpp Fixed.cpp
+SRC = main.cpp ClapTrap.cpp FragTrap.cpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++ -g
 CFLAGS = -Wall -Wextra -Werror -std=c++98

@@ -1,4 +1,6 @@
-    #include <iostream>
+#pragma once
+
+#include <iostream>
 
 class ClapTrap
 {
@@ -8,22 +10,25 @@ private:
     int _energy;
     int _damage;
 public:
-    ClapTrap(const std::string name);
-    ~ClapTrap();
+    explicit ClapTrap(const std::string name);
+    virtual ~ClapTrap();
 
     std::string getName();
 
-    void attack(const std::string &target);
-    int getAttackDamage();
+    virtual void attack(const std::string &target);
+    void setAttackDamage(int amount);
+    int getAttackDamage() const;
     
-    void takeDamage(unsigned int amount);
-    void beRepaired(unsigned int amount);
+    virtual void takeDamage(unsigned int amount);
+    virtual void beRepaired(unsigned int amount);
 
-    int getEnergyAmmout();
-    int subEnergyAmmout();
+    int getEnergyAmmout() const;
+    void setEnergyAmmount(int amount);
+    int subEnergyAmmout(unsigned int amount);
 
-    int getHitPointsAmmout();
-    int subHitPointsAmmout();
+    int getHitPointsAmmout() const;
+    void setHitPointsAmmount(int amount);
+    int subHitPointsAmmout(unsigned int amount);
     void addHitPointsAmmout(int amount);
 };
 
