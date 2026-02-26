@@ -9,7 +9,7 @@ ClapTrap::ClapTrap(const std::string name) :
 
 ClapTrap::~ClapTrap()
 {
-    std::cout << "ClapTrap Destructor called" << std::endl;
+    std::cout << "Destructor called" << std::endl;
 }
 
 std::string ClapTrap::getName()
@@ -30,17 +30,12 @@ void ClapTrap::attack(const std::string &target)
             " attacks " << target <<
             ", causing " << _damage <<
             " points of damage!" << std::endl;
-    this->subEnergyAmmout(1);
+    this->subEnergyAmmout();
 }
 
-int ClapTrap::getAttackDamage() const
+int ClapTrap::getAttackDamage()
 {
     return this->_damage;
-}
-
-void ClapTrap::setAttackDamage(int amout)
-{
-    this->_damage = amout;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
@@ -55,7 +50,6 @@ void ClapTrap::takeDamage(unsigned int amount)
     std::cout << "ClapTrap " << _name <<
             " takes " << amount <<
             " points of damage!" << std::endl;
-    this->subHitPointsAmmout(int(amount));
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
@@ -71,38 +65,28 @@ void ClapTrap::beRepaired(unsigned int amount)
             " repairs itself" << std::endl;
 
     this->addHitPointsAmmout((int)amount);
-    this->subEnergyAmmout(1);
+    this->subEnergyAmmout();
 }
 
-int ClapTrap::getEnergyAmmout() const
+int ClapTrap::getEnergyAmmout()
 {
     return this->_energy;
 }
 
-void ClapTrap::setEnergyAmmount(int amount)
+int ClapTrap::subEnergyAmmout()
 {
-    this->_energy = amount;
-}
-
-int ClapTrap::subEnergyAmmout(unsigned int amount)
-{
-    this->_energy -= amount;
+    this->_energy--;
     return this->_energy;
 }
 
-int ClapTrap::getHitPointsAmmout() const
+int ClapTrap::getHitPointsAmmout()
 {
     return this->_hitPoints;
 }
 
-void ClapTrap::setHitPointsAmmount(int amount)
+int ClapTrap::subHitPointsAmmout()
 {
-    this->_hitPoints = amount;
-}
-
-int ClapTrap::subHitPointsAmmout(unsigned int amount)
-{
-    this->_hitPoints -= amount;
+    this->_hitPoints--;
     return this->_hitPoints;
 }
 

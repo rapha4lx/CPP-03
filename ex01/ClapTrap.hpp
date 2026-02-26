@@ -1,3 +1,6 @@
+#ifndef CLAPTRAP_HPP
+#define CLAPTRAP_HPP
+
 #include <iostream>
 
 class ClapTrap
@@ -11,11 +14,7 @@ public:
     ClapTrap(const std::string name);
     ~ClapTrap();
 
-    std::string getName();
-
     void attack(const std::string &target);
-    int getAttackDamage();
-    
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);
 
@@ -25,5 +24,9 @@ public:
     int getHitPointsAmmout();
     int subHitPointsAmmout();
     void addHitPointsAmmout(int amount);
+
+    std::string getName();
+    int getAttackDamage();
 };
 
+#endif
