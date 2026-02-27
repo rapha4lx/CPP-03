@@ -17,6 +17,7 @@ int main(void)
     frag.takeDamage(1);
     std::cout << "Current Health amount: " << frag.getHitPointsAmmout() << std::endl;
     frag.beRepaired(1);
+    std::cout << "Current Health amount: " << frag.getHitPointsAmmout() << std::endl;
 
     return (0);
 }

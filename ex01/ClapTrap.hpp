@@ -5,11 +5,12 @@
 
 class ClapTrap
 {
-private:
+protected:
     std::string _name;
     int _hitPoints;
     int _energy;
     int _damage;
+
 public:
     ClapTrap(const std::string name);
     ~ClapTrap();

@@ -4,9 +4,9 @@
 FragTrap::FragTrap(const std::string name) : ClapTrap(name)
 {
     std::cout << "FragTrap Constructor called\n";
-    this->setEnergyAmmount(100);
-    this->setHitPointsAmmount(100);
-    this->setAttackDamage(30);
+    this->_energy = 100;
+    this->_damage = 30;
+    this->_hitPoints = 100;
 }
 
 FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other)
@@ -25,9 +25,9 @@ FragTrap &FragTrap::operator=(const FragTrap &other)
     if (this == &other)
         return *this;
     // *this = other;
-    this->setEnergyAmmount(other.getEnergyAmmout());
-    this->setHitPointsAmmount(other.getHitPointsAmmout());
-    this->setAttackDamage(other.getAttackDamage());
+    this->_energy = other._energy;
+    this->_hitPoints = other._hitPoints;
+    this->_damage = other._damage;
     return *this;
 }
 
@@ -44,7 +44,7 @@ void FragTrap::attack(const std::string &target)
             " attacks " << target <<
             ", causing " << this->getAttackDamage() <<
             " points of damage!" << std::endl;
-    this->subEnergyAmmout(1);
+    this->subEnergyAmmout();
 }
 
 void FragTrap::takeDamage(unsigned int amount)
@@ -59,7 +59,7 @@ void FragTrap::takeDamage(unsigned int amount)
     std::cout << "ClapTrap " << this->getName() <<
             " takes " << amount <<
             " points of damage!" << std::endl;
-    this->subHitPointsAmmout(int(amount));
+    this->_hitPoints -= amount;
 }
 
 void FragTrap::beRepaired(unsigned int amount)
@@ -75,7 +75,7 @@ void FragTrap::beRepaired(unsigned int amount)
             " repairs itself" << std::endl;
 
     this->addHitPointsAmmout((int)amount);
-    this->subEnergyAmmout(1);
+    this->subEnergyAmmout();
 }
 
 void FragTrap::highFivesGuys(void)
